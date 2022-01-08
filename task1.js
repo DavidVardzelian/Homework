@@ -1,29 +1,25 @@
-//Map realization
-
-const map = function (array, cb) {
- 
-    let newArray = [];
- 
-    array.forEach(function (element) {
-       newArray.push(cb(element)); 
-    });
- 
-    return newArray;
- 
+const obj = {
+  name: "Jhon",
+  fullName: null,
+  country: {
+    name: "Armenia",
+    code: 374,
+  },
 };
- 
-//slice realization
 
-function slice(array, from, to = array.length) {
+// Recursive function
+function reversObj(obj) {
+  let res = {};
 
-    from = Math.max(from, 0);
-    to = Math.min(to, array.length);
-    const result = [];
-    for(let index = from; index < to; index++) {
-    }
-    return result;
+  for (let key in obj) {
+    const value = obj[key];
+
+    // Checking value for existing for null case
+    if (value && typeof value === "object") res = {...res, [key]: reversObj(value)};
+    else res[value] = key;
   }
 
+  return res;
+}
 
-
- 
+console.log(reversObj(obj));
