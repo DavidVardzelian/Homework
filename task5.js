@@ -24,9 +24,6 @@ villainNames.forEach((item) => {
 
 let enemy1 = villains[Math.round(Math.random()*villains.length)];
 
-console.log(villains.indexOf(enemy1)+1)
-
-
 function Attack (){
   heroes.forEach(function(item){
           let time = setInterval(() => {
