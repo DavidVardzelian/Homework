@@ -7,6 +7,7 @@
       this.healt = 100;
     }
   }
+  
 
   const heroeNames = ["SpiderMan", "IronMan", "Hulk", "BlackWidow", "Thor"];
   const villainNames = ["Thanos", "Killmonger", "Loki", "Magneto", "DoctorOctopus"];
