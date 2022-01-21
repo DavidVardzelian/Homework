@@ -1,21 +1,5 @@
-//Map realization
+let arr = [1,2,3,4,5,6]
+console.log(arr.indexOf(3))
 
-const map = function (array, cb) {
-  let newArray = [];
 
-  array.forEach(function (element) {
-    newArray.push(cb(element));
-  });
-
-  return newArray;
-};
-
-//slice realization
-
-function slice(array, from, to = array.length) {
-  from = Math.max(from, 0);
-  to = Math.min(to, array.length);
-  const result = [];
-  for (let index = from; index < to; index++) {}
-  return result;
-}
+console.log(arr)

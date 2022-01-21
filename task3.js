@@ -7,7 +7,7 @@ const obj = {
   },
 };
 
-// Recursive function
+// Recursive functiona
 function reversObj(obj) {
   let res = {};
 
