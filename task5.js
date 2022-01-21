@@ -26,7 +26,6 @@ let enemy1 = villains[Math.round(Math.random()*villains.length)];
 
 console.log(villains.indexOf(enemy1)+1)
 
-// >>--->>---while array is empty do attack function ---<<---<< senc porci
 
 function Attack (){
   heroes.forEach(function(item){
