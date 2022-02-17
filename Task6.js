@@ -1,25 +1,32 @@
-/*Create a Node JS application that will recursively search all 
-files in the directory given in command-line arguments and create a 
-new file sorted_files.txt and write file paths and sizes in this 
-file line by line sorted by file size.*/
-
 
 const path = require("path");
 const fs = require("fs").promises;
 
-
-
 const argPath = process.argv;
 
+async function getDirectoryFiles(directoryPath) {
+  const directoryFiles = await fs.readdir(path.resolve(directoryPath), {
+    withFileTypes: true,
+  });
 
-async function readDir(Paths){
-  let Dir = await fs.readdir(Paths, {withFileTypes: true})
-  Dir.forEach(files => files.isDirectory() 
-    ? readDir(path.resolve(Paths, files.name))
-    : fs.writeFile('sorted_files.txt', `${path.resolve(Paths, files.name)} -----> fileSize\n`))
- }
- 
+  return Promise.all(
+    directoryFiles.map(async (file) => {
+      if (file.isDirectory()) {
+        return await getDirectoryFiles(path.resolve(directoryPath, file.name));
+      } else return path.resolve(directoryPath, file.name);
+    })
+  );
+}
 
 
-readDir(argPath[2])
+async function start(path) {
+  const res = await getDirectoryFiles(path)
+  fs.writeFile('sorted_files.txt',`${res.flat(Infinity).join('\n')}`)
+}
 
+
+
+start(argPath[2]);
+
+
+//Kisat (((
