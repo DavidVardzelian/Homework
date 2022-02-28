@@ -1,0 +1,14 @@
+extends layout.pug
+block append style
+    link(rel='stylesheet' href='/styles/FormStyle.css')
+block content
+  
+    .formWrapper
+        form(class='form' action=`?_method=PUT` method='post')
+            p Enter new name :
+            input(name='name' pattern="^(?=[a-zA-Z0-9._]{2,20}$)(?!.*[_.]{2})[^_.].*[^_.]$"  value=`${user.name}`)
+            p Phone Number :
+            input(name='phoneNum' pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$" placeholder="+374XX XX XX XX" title='+374 XX XX XX XX' value=`${user.phoneNum}`)
+            br
+            button.btn.btn-primary(type='submit') Update 
+                 i(class="fa-solid fa-repeat")

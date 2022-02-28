@@ -1,0 +1,13 @@
+extends layout.pug
+block append style
+    link(rel ='stylesheet' href='../styles/FormStyle.css')
+block content
+    .formWrapper
+        form(class='form' action='/contacts/new' method='post')
+            p Enter name :
+            input(name='name' pattern="^(?=[a-zA-Z0-9._]{2,20}$)(?!.*[_.]{2})[^_.].*[^_.]$" placeholder="John")
+
+            p Phone Number :
+            input(name='phoneNum' pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$" placeholder="+374XX XX XX XX")
+            br
+            button.btn.btn-warning(type='submit')  Add
